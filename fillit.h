@@ -24,16 +24,16 @@
 
 # define BUF_SIZE 39
 
-//typedef struct			s_list
-//{
-//	char				**tetri;
-//	struct s_list		*prev;
-//	struct s_list		*next;
-//}						t_list
-
-int						main(int argc, char **argv);
-char					*open_file(char *str);
-char					**first_split(char *str);
-char					***final_split(char **tbl);
+int		main(int argc, char **argv);
+char	*open_file(char *str);
+char	**first_split(char *str);
+char	***final_split(char **tbl);
+int		chk_tetri(char **tetri);
+void	tetri_on(char **tab, char **tetri, int li, int col);
+void	ft_puttab(char **tab);
+int		cmp_tetri_tab(char **tetri, char **tab, int li, int col);
+void	swap_tetri(char ***tetri, int n);
+void	tetri_off(char **tab, char **tetri, int li, int col);
+char	**mv_tetra(char **tetra);
 
 #endif

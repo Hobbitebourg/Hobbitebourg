@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puttab.c                                        :+:      :+:    :+:   */
+/*   swap_tetri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouvell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/09 12:24:46 by cbouvell          #+#    #+#             */
-/*   Updated: 2017/01/13 15:37:58 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/01/10 16:29:05 by cbouvell          #+#    #+#             */
+/*   Updated: 2017/01/10 16:38:11 by cbouvell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_puttab(char **tab)
+void	swap_tetri(char ***tetri, int n)
 {
-	int i;
-	int j;
+	char **c;
 
-	i = 0;
-	while (tab[i])
-	{
-		j = 0;
-		while (tab[i][j])
-		{
-			write(1, &tab[i][j], 1);
-			j++;
-		}
-		write(1, "\n", 1);
-		i++;
-	}
+	c = tetri[n];
+	tetri[n] = tetri[n + 1];
+	tetri[n + 1] = c;
 }

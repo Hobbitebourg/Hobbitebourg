@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int		check_tbl(char **tbl)
+static int		check_tbl(char **tbl)
 {
 	int		i;
 	int		j;
@@ -38,7 +38,7 @@ int		check_tbl(char **tbl)
 	return (1);
 }
 
-char	**first_split(char *str)
+char		**first_split(char *str)
 {
 	int		i;
 	int		r;

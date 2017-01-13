@@ -6,13 +6,13 @@
 /*   By: cbouvell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:06:33 by cbouvell          #+#    #+#             */
-/*   Updated: 2017/01/06 13:19:15 by cbouvell         ###   ########.fr       */
+/*   Updated: 2017/01/10 17:29:57 by cbouvell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char **crea_tab(int size)
+static char	**crea_tab(int size)
 {
 	int i;
 	int j;
@@ -36,21 +36,15 @@ char **crea_tab(int size)
 	return (res);
 }
 
-int	bck_trck(t_list tetra,char **tab, int i, int j)
+int		bck_trck(char **tetra, char **tab, int i, int j)
 {
-	if (tab[i][j] == '.')
+	if (tetra_cmp(tab, i, j, tetra) == 1)
 	{
-		while (tetra != NULL)
-		{
-			if (tetra_cmp(tab, i, j, tetra) == 1)
-			{
-				pl_tetra_tab(tab, pc, i, j);
-				if (bck_trck(tetra->next, tab, i, j) == 1)
-					return (1);
-				rp_pc_pt(tab, tetra	, i, j);
-				swap_tetra(tetra);
-			}
-		}
+		tetri_on(tab, pc, i, j);
+		if (bck_trck((char **)(tetra + 1), tab, i, j) == 1)
+			return (1);
+		tetri_off(tab, tetra, i, j);
+		swap_tetri((char **)tetra,(char **)(tetra + 1))
 	}
 	else if (tab[i][j + 1])
 		bck_trck(tetra, tab, i, j + 1);

@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmp_tetri_tab.c                                    :+:      :+:    :+:   */
+/*   tetri_off.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbouvell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/06 16:06:02 by cbouvell          #+#    #+#             */
-/*   Updated: 2017/01/13 15:40:36 by rcolleau         ###   ########.fr       */
+/*   Created: 2017/01/09 15:58:43 by cbouvell          #+#    #+#             */
+/*   Updated: 2017/01/10 16:36:05 by cbouvell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	cmp_tetri_tab(char **tetri, char **tab, int li, int col)
+void	tetri_off(char **tab, char **tetri, int li, int col)
 {
 	int i;
 	int j;
-	int flag;
 
-	flag = 1;
 	i = 0;
 	while (tetri[i])
 	{
 		j = 0;
 		while (tetri[i][j])
 		{
-			if (!tab[li + i] && tetri[i][j] != '.')
-				flag = 0;
-			else if (tetri[i][j] != '.' && !tab[li + i][col + j])
-				flag = 0;
-			else if (tetri[i][j] != '.' && tab[li + i][col + j] &&
-					tab[li + i][col + j] != '.')
-				flag = 0;
+			if (tetri[i][j] != '.' && tab[li + i][col + j] == tetri[i][j])
+				tab[li + i][col + j] = '.';
 			j++;
 		}
 		i++;
 	}
-	return (flag);
 }
